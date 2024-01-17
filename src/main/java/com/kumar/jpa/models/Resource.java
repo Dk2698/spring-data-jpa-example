@@ -1,25 +1,18 @@
 package com.kumar.jpa.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Builder
-public class Resource {
-    
-    @Id
-    @GeneratedValue
-    private Integer id;
+@SuperBuilder
+public class Resource extends BaseEntity{
 
     private String name;
 
@@ -27,4 +20,7 @@ public class Resource {
 
     private String url;
 
+    @OneToOne
+    @JoinColumn(name = "lecture_id")
+    private Lecture lecture;
 }
