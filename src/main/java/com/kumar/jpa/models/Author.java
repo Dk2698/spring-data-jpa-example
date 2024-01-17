@@ -1,14 +1,19 @@
 package com.kumar.jpa.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Builder
 //@Table(name = "AUTHOR_TBL")
 public class Author {
 
@@ -48,8 +53,8 @@ public class Author {
     private int age;
 
     @Column(
-            updatable = false,
-            nullable = false
+            updatable = false
+//            nullable = false
     )
     private LocalDateTime createdAt;
 
@@ -58,5 +63,8 @@ public class Author {
     )
     private LocalDateTime lastModified;
 
-
+    @ManyToMany(
+        mappedBy = "authors"
+    )
+    private List<Course> courses;
 }
