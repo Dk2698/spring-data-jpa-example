@@ -35,4 +35,7 @@ public class Course {
     )
     private List<Author> authors; // owner of this entity  and maintain primary key and foreign key-> relationship to other entity
 
+    @OneToMany(mappedBy = "course")
+    private List<Section> sections;// course:sections  -> one to many
+
 }
