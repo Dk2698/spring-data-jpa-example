@@ -60,6 +60,10 @@ public class JpaApplication {
 			// update Author a set a.age = 22 where a.id = 1
 
 			repository.updateAuthor(23, 1);
+
+			// find by named query
+			repository.findByNamedQuery(20)
+					.forEach((author)->System.out.println(author.getFirstName()));
 		};
 	}
 }

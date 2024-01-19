@@ -14,6 +14,19 @@ import java.util.List;
 @Entity
 @SuperBuilder
 //@Table(name = "AUTHOR_TBL")
+
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = "Author.findByNamedQuery",
+                        query = "select a from Author a where a.age >= :age"
+                ),
+                @NamedQuery(
+                        name = "Author.updateByNamedQuery",
+                        query = "update Author a set a.age = :age "
+                )
+        }
+)
 public class Author extends BaseEntity{
 
 //    @Id
