@@ -36,16 +36,30 @@ public class JpaApplication {
 //					.build();
 //			videoRepository.save(video);
 
-			for (int i = 0; i < 50; i++) {
-				Faker faker = new Faker();
-				var author = Author.builder()
-						.firstName(faker.name().firstName())
-						.lastName(faker.name().lastName())
-						.age(faker.number().numberBetween(19,50))
-						.email("test"+ i+ "@nomail.com")
-						.build();
-				repository.save(author);
-			}
+//			for (int i = 0; i < 50; i++) {
+//				Faker faker = new Faker();
+//				var author = Author.builder()
+//						.firstName(faker.name().firstName())
+//						.lastName(faker.name().lastName())
+//						.age(faker.number().numberBetween(19,50))
+//						.email("test"+ i+ "@nomail.com")
+//						.build();
+//				repository.save(author);
+//			}
+
+			// update author with ID = 1
+//			var author = Author.builder()
+//					.id(1)
+//					.firstName("Kumar")
+//					.lastName("D")
+//					.age(26)
+//					.email("kumar@nomail.com")
+//					.build();
+//			repository.save(author);
+
+			// update Author a set a.age = 22 where a.id = 1
+
+			repository.updateAuthor(23, 1);
 		};
 	}
 }
