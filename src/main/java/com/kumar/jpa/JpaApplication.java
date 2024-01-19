@@ -5,10 +5,12 @@ import com.kumar.jpa.models.Author;
 import com.kumar.jpa.models.Video;
 import com.kumar.jpa.repositories.AuthorRepository;
 import com.kumar.jpa.repositories.VideoRepository;
+import com.kumar.jpa.specification.AuthorSpecification;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 @SpringBootApplication
 public class JpaApplication {
@@ -63,6 +65,13 @@ public class JpaApplication {
 
 			// find by named query
 			repository.findByNamedQuery(20)
+					.forEach((author)->System.out.println(author.getFirstName()));
+
+			// specification
+			final Specification<Author> specification = Specification.where(AuthorSpecification.hasAge(34))
+					.and(AuthorSpecification.firstNameLike("D"));
+
+			repository.findAll(specification)
 					.forEach((author)->System.out.println(author.getFirstName()));
 		};
 	}
