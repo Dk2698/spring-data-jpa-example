@@ -6,13 +6,19 @@ import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@Builder
 @SuperBuilder
-public class Resource extends BaseEntity{
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "resource_type")
+public class Resource {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
 
     private String name;
 
