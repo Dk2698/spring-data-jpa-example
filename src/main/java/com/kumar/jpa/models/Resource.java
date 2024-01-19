@@ -12,8 +12,9 @@ import java.util.List;
 @Entity
 //@Builder
 @SuperBuilder
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "resource_type")
+//@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@DiscriminatorColumn(name = "resource_type") --> only with SINGLE TABLE
 public class Resource {
 
     @Id
